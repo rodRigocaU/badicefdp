@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="SFML_PROYECT" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/SFML_PROYECT" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add library="sfml-graphics-d" />
+					<Add library="sfml-audio-d" />
+					<Add library="sfml-network-d" />
+					<Add library="sfml-window-d" />
+					<Add library="sfml-system-d" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/SFML_PROYECT" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add directory="include" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="sfml-graphics" />
+					<Add library="sfml-audio" />
+					<Add library="sfml-network" />
+					<Add library="sfml-window" />
+					<Add library="sfml-system" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-std=c++14" />
+			<Add option="-fexceptions" />
+			<Add directory="C:/Users/Javier/Desktop/librerias_c++/SFML-2.5.1/include" />
+		</Compiler>
+		<Linker>
+			<Add directory="C:/Users/Javier/Desktop/librerias_c++/SFML-2.5.1/lib" />
+		</Linker>
+		<Unit filename="include/Bloque.h" />
+		<Unit filename="include/Boton.h" />
+		<Unit filename="include/Game.h" />
+		<Unit filename="include/Line.h" />
+		<Unit filename="include/Player.h" />
+		<Unit filename="include/colissiomboxes.h" />
+		<Unit filename="include/fruit.h" />
+		<Unit filename="include/vector.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="src/Bloque.cpp" />
+		<Unit filename="src/Boton.cpp" />
+		<Unit filename="src/Game.cpp" />
+		<Unit filename="src/Line.cpp" />
+		<Unit filename="src/Player.cpp" />
+		<Unit filename="src/colissiomboxes.cpp" />
+		<Unit filename="src/fruit.cpp" />
+		<Unit filename="src/vector.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
