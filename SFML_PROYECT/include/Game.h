@@ -2,20 +2,20 @@
 #define GAME_H
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "Player.h"
+#include "Hielo.h"
 
+using namespace std;
 
 class Game
 {
     public:
-
+        sf::Sprite TtoS(char *rute,sf::Texture&);
         void Run(sf::RenderWindow&);
-        float e = 3.0;
-        float r = -3.0;
-        float u = 3.0;
-        float h = -3.0;
-
+        bool menu = true;
     private:
-        int FPS = 70;
+        int FPS;
+
 };
 
 #endif // GAME_H

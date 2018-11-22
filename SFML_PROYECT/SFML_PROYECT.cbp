@@ -51,23 +51,21 @@
 		<Linker>
 			<Add directory="C:/Users/Javier/Desktop/librerias_c++/SFML-2.5.1/lib" />
 		</Linker>
-		<Unit filename="include/Bloque.h" />
-		<Unit filename="include/Boton.h" />
+		<Unit filename="include/Enemigo.h" />
 		<Unit filename="include/Game.h" />
-		<Unit filename="include/Line.h" />
+		<Unit filename="include/Hielo.h" />
+		<Unit filename="include/Objeto.h" />
 		<Unit filename="include/Player.h" />
 		<Unit filename="include/colissiomboxes.h" />
-		<Unit filename="include/fruit.h" />
-		<Unit filename="include/vector.h" />
+		<Unit filename="include/fruits.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="src/Bloque.cpp" />
-		<Unit filename="src/Boton.cpp" />
+		<Unit filename="src/Enemigo.cpp" />
 		<Unit filename="src/Game.cpp" />
-		<Unit filename="src/Line.cpp" />
+		<Unit filename="src/Hielo.cpp" />
+		<Unit filename="src/Objeto.cpp" />
 		<Unit filename="src/Player.cpp" />
 		<Unit filename="src/colissiomboxes.cpp" />
-		<Unit filename="src/fruit.cpp" />
-		<Unit filename="src/vector.cpp" />
+		<Unit filename="src/fruits.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

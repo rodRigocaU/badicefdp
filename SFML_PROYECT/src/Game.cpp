@@ -1,115 +1,162 @@
 #include "Game.h"
-#include "Player.h"
-#include "fruit.h"
-#include "colissiomboxes.h"
-#include <SFML/Graphics.hpp>
 #include <iostream>
+#include <SFML/Graphics.hpp>
+#include "Player.h"
+#include "Hielo.h"
+#include "fruits.h"
+
 using namespace std;
 
-
-void Game::Run(sf::RenderWindow &road){
-
-        sf::Texture ice_Clim;
-        ice_Clim.loadFromFile("Imagenes/player.png");
-        ice_Clim.setSmooth(true);
-        sf::Sprite ice_ClIm;
-        ice_ClIm.setTexture(ice_Clim);
-
-        sf::Texture block;
-        block.loadFromFile("Imagenes/bloque.png");
-        block.setSmooth(true);
-        sf::Sprite Block;
-        Block.setTexture(block);
-        Player player1;
-        colissiomboxes player11(player1.posx, player1.posy, sf::Vector2f(50,50), sf::Color::Transparent);
+sf::Sprite Game::TtoS(char *rute,sf::Texture &t){
+    t.loadFromFile(rute);
+    t.setSmooth(true);
+    sf::Sprite s;
+    s.setTexture(t);
+    return s;
+}
 
 
-        sf::Texture fruits;
-        fruits.loadFromFile("Imagenes/fruit.png");
-        fruits.setSmooth(true);
-        sf::Sprite Fruit;
-        Fruit.setTexture(fruits);
+void Game::Run(sf::RenderWindow &app){
+    sf::Texture ba;
+    sf::Texture pl;
+    sf::Texture ic;
+    sf::Texture me;
+    sf::Texture frut;
+    sf::Font font;
+    sf::Text cad_1;
+    sf::Text cad_2;
+    sf::String str;
 
-        //colissiomboxes fruit11;
+    char *ice = "Images/bloque.png";
+    char *bg = "Images/background.png";
+    char *player = "Images/stand1.png";
+    char *menu_S = "Images/menu.jpg";
+    char *fruti = "Images/fruit.png";
 
-        bool colission;
-        fruit apple;
-        apple.setx();
-        apple.sety();
-        Fruit.setPosition(apple.returnx(), apple.returny());
-        colissiomboxes fruit11(apple.returnx(), apple.returny() , sf::Vector2f(50,50), sf::Color::Transparent);
-        srand(time(NULL));
-        while(road.isOpen())
+    font.loadFromFile("Images/MAGNETOB.TTF");
+    cad_1.setCharacterSize(20);
+    cad_2.setCharacterSize(20);
+
+    str = "PRESS E TO CONTINUE";
+    cad_1.setString(str);
+    cad_1.setFont(font);
+    cad_1.setColor(sf::Color(207,216,215));
+    cad_1.setPosition(225,500);
+
+    str = "PRESS ESC TO EXIT";
+    cad_2.setString(str);
+    cad_2.setFont(font);
+    cad_2.setColor(sf::Color(207,216,215));
+    cad_2.setPosition(225,600);
+
+
+    int nivel1[15][15] = {{9,9,9,9,9,9,9,9,9,9,9,9,9,9,9},
+                          {9,1,0,0,0,0,0,0,0,0,0,0,0,0,9},
+                          {9,0,0,0,0,0,0,0,0,0,0,0,0,0,9},
+                          {9,0,0,0,0,0,0,0,0,0,0,0,0,0,9},
+                          {9,0,0,0,0,0,1,1,1,1,0,0,0,0,9},
+                          {9,0,0,0,1,0,0,0,0,0,0,1,0,0,9},
+                          {9,0,0,0,1,0,0,0,0,0,0,1,0,0,9},
+                          {9,0,0,0,1,0,0,0,0,0,0,1,0,0,9},
+                          {9,0,0,0,1,0,0,0,0,0,0,1,0,0,9},
+                          {9,0,0,0,0,1,2,0,0,0,0,0,0,0,9},
+                          {9,0,0,0,0,0,1,1,1,1,0,0,0,0,9},
+                          {9,0,0,0,0,0,0,1,1,0,0,0,0,0,9},
+                          {9,0,0,0,0,0,0,0,0,0,0,0,0,0,9},
+                          {9,1,0,0,0,0,0,0,0,0,1,0,0,0,9},
+                          {9,9,9,9,9,9,9,9,9,9,9,9,9,9,9},};
+
+
+        int frutita[15][15] = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                          {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                          {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                          {0,3,0,0,0,0,0,0,0,0,0,0,3,0,0},
+                          {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                          {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                          {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                          {0,3,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                          {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                          {0,0,0,0,0,0,0,0,0,0,0,0,3,0,0},
+                          {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                          {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                          {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                          {0,0,0,3,0,0,0,3,0,0,0,0,0,3,0},
+                          {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},};
+
+
+
+
+    sf::Sprite Ice = TtoS(ice,ic);
+    sf::Sprite Background = TtoS(bg,ba);
+    sf::Sprite Icecream = TtoS(player,pl);
+    sf::Sprite Menu = TtoS(menu_S,me);
+    sf::Sprite fruta = TtoS(fruti,frut);
+
+    Background.setPosition(50,50);
+    Menu.setPosition(135,50);
+
+    fruits fresa;
+    Player helado(Icecream,nivel1);
+    Hielo hielo(Ice);
+
+    while(app.isOpen()){
+        app.setFramerateLimit(FPS);
+        app.clear(sf::Color (0,0,0));
+
+
+        if(menu)
         {
-
-
-                colission = true;
-                road.setFramerateLimit(FPS);
-                road.clear(sf::Color(255,0, 0));
-                player1.Controls(road,e,r,u,h);
-                if(player1.posy <= 1)
-                {
-                    r = 0;
-                }
-                else
-                {
-                    r = -3.0;
-                }
-                if(player1.posx <= 1)
-                {
-                    h = 0;
-                }
-                else
-                {
-                    h = -3.0;
-                }
-                if(player1.posy >= 700)
-                {
-                    e = 0;
-                }
-                else
-                {
-                    e = 3.0;
-                }
-                if(player1.posx >= 750)
-                {
-                    u = 0;
-                }
-                else
-                {
-                    u = 3.0;
-                }
-                player11.update(player1.posx, player1.posy, sf::Vector2f(50,50), sf::Color::Transparent);
-                player11.refresh();
-                fruit11.refresh();
-
-                if(player11.right < fruit11.left || player11.left > fruit11.right || player11.top > fruit11.bottom || player11.bottom < fruit11.top)
-                {
-                    colission = false;
-                }
-                if(colission == true)
-                {
-                    apple.setx();
-                    apple.sety();
-                    fruit11.update(apple.returnx(),apple.returny() , sf::Vector2f(50,50), sf::Color::Transparent);
-                    Fruit.setPosition(apple.returnx(), apple.returny());
-                }
-
-
-
-                road.draw(player11.hitbox);
-                road.draw(fruit11.hitbox);
-                road.draw(Fruit);
-                player1.Move();
-                player1.Draw(road,ice_ClIm);
-                road.display();
-
-
+            FPS = 5;
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::E)){cad_1.setColor(sf::Color(255,0,102)); menu = false;}
+            if(sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){cad_2.setColor(sf::Color(255,0,102));app.draw(cad_2);app.display();app.close();}
+            app.draw(Menu);
+            app.draw(cad_1);
+            app.draw(cad_2);
+            app.display();
             sf::Event e;
-            while(road.pollEvent(e))
-            {
+            while(app.pollEvent(e)){
                 if(e.type == sf::Event::Closed)
-                    road.close();
+                    app.close();}
+
+        }
+
+        else{
+        FPS = 60;
+        app.clear(sf::Color (200,200,200));
+        app.draw(Background);
+
+
+        for(int y=1;y<14;y++){
+            for(int x=1;x<14;x++){
+                fresa.setpos(x);
+                fresa.setpoy(y);
+                if(nivel1[y][x]==2){
+                    helado.Controls(app,nivel1);
+                    helado.Draw(nivel1,x,y,app);
+                }
+                if(nivel1[y][x]==1){
+                    hielo.Draw(nivel1,x,y,app);
+                }
+                if(frutita[y][x]==3){
+                        fruta.setPosition(fresa.getpos(),fresa.getpoy());
+                        app.draw(fruta);
+                }
+                if(nivel1[y][x]== 2 && frutita[y][x] == 3)
+                {
+                    frutita[y][x] = 0;
+                }
+
             }
         }
+
+        app.display();
+
+        sf::Event e;
+        while(app.pollEvent(e)){
+            if(e.type == sf::Event::Closed)
+                app.close();
+        }
+
+        }
+    }
 }

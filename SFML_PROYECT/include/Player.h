@@ -1,35 +1,30 @@
 #ifndef PLAYER_H
 #define PLAYER_H
-#include <SFML/Graphics.hpp>
 #include <iostream>
-#include "Bloque.h"
-#include "colissiomboxes.h"
+#include <SFML/Graphics.hpp>
+#include "Objeto.h"
 
 using namespace std;
 
-class Player
+class Player:public Objeto
 {
     public:
+        Player(sf::Sprite&,int [15][15]);
+        void Controls(sf::RenderWindow&,int [15][15]);
+        int getPosx();
+        int getPosy();
+        void Move(int [15][15],int,int);
+        void SpawnIce(int [15][15],int,int);
+        void DestroyIce(int [15][15],int,int);
+        void MoveSprite(int &,int &,bool &);
+        void Draw(int [15][15],int,int,sf::RenderWindow&);
 
-        void Controls(sf::RenderWindow&,float , float,float,float);
-        void Draw(sf::RenderWindow&,sf::Sprite&);
-        void Move();
-        float posx = (400);
-        float posy = (400);
-        float dx = 0.0,dy = 0.0;
-
-        vector<Bloque> Disparos;
-        int tam =  0;
-        bool notblock = false;
     private:
-        int sizeblock = 30;
-        int setLimit(int&,int&);
-        bool up = false;
-        bool down = true;
-        bool right = false;
-        bool left = false;
-
-
+        int posx,posy;
+        bool up=false,left=false,right=false;
+        bool down = true,isMove = false,isPressed = false;
+        sf::Sprite s;
+        int cont = 0;
 };
 
 #endif // PLAYER_H

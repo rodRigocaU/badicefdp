@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1542145763 source:c:\users\javier\desktop\proyecto.2018\sfml_proyect\main.cpp
+1542578294 source:c:\users\javier\desktop\proyecto.2018\sfml_proyect\main.cpp
 	<iostream>
 	<SFML/Graphics.hpp>
 	"Game.h"
@@ -413,29 +413,29 @@
 	<SFML/Graphics/Drawable.hpp>
 	<SFML/Window/GlResource.hpp>
 
-1542423179 c:\users\javier\desktop\proyecto.2018\sfml_proyect\include\game.h
+1542582791 c:\users\javier\desktop\proyecto.2018\sfml_proyect\include\game.h
 	<iostream>
 	<SFML/Graphics.hpp>
+	"Player.h"
+	"Hielo.h"
 
-1542423541 source:c:\users\javier\desktop\proyecto.2018\sfml_proyect\src\game.cpp
+1542659661 source:c:\users\javier\desktop\proyecto.2018\sfml_proyect\src\game.cpp
 	"Game.h"
+	<iostream>
+	<SFML/Graphics.hpp>
 	"Player.h"
-	"fruit.h"
-	"colissiomboxes.h"
-	<SFML/Graphics.hpp>
-	<iostream>
+	"Hielo.h"
+	"fruits.h"
 
-1542423179 source:c:\users\javier\desktop\proyecto.2018\sfml_proyect\src\player.cpp
+1542578294 source:c:\users\javier\desktop\proyecto.2018\sfml_proyect\src\player.cpp
 	"Player.h"
-	<SFML/Graphics.hpp>
-	"Bloque.h"
 	<iostream>
+	<SFML/Graphics.hpp>
 
-1542423179 c:\users\javier\desktop\proyecto.2018\sfml_proyect\include\player.h
-	<SFML/Graphics.hpp>
+1542578294 c:\users\javier\desktop\proyecto.2018\sfml_proyect\include\player.h
 	<iostream>
-	"Bloque.h"
-	"colissiomboxes.h"
+	<SFML/Graphics.hpp>
+	"Objeto.h"
 
 1541886724 source:c:\users\javier\desktop\proyecto.2018\sfml_proyect\src\bloque.cpp
 	"Bloque.h"
@@ -487,4 +487,44 @@
 1542422346 c:\users\javier\desktop\proyecto.2018\sfml_proyect\include\colissiomboxes.h
 	<iostream>
 	<SFML/Graphics.hpp>
+
+1542493940 source:c:\users\javier\desktop\proyecto.2018\sfml_proyect\src\menu.cpp
+	"Menu.h"
+
+1542493874 c:\users\javier\desktop\proyecto.2018\sfml_proyect\include\menu.h
+	<SFML/Graphics.hpp>
+	"iostream"
+
+1542578294 c:\users\javier\desktop\proyecto.2018\sfml_proyect\include\objeto.h
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1542578294 c:\users\javier\desktop\proyecto.2018\sfml_proyect\include\hielo.h
+	<iostream>
+	<SFML/Graphics.hpp>
+	"Objeto.h"
+
+1542578294 source:c:\users\javier\desktop\proyecto.2018\sfml_proyect\src\hielo.cpp
+	"Hielo.h"
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1542578294 source:c:\users\javier\desktop\proyecto.2018\sfml_proyect\src\objeto.cpp
+	"Objeto.h"
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1542592187 source:c:\users\javier\desktop\proyecto.2018\sfml_proyect\src\fruits.cpp
+	"fruits.h"
+	<iostream>
+	<SFML/Graphics.hpp>
+
+1542592106 c:\users\javier\desktop\proyecto.2018\sfml_proyect\include\fruits.h
+
+1542818934 source:c:\users\javier\desktop\proyecto.2018\sfml_proyect\src\enemigo.cpp
+	"Enemigo.h"
+
+1542819307 c:\users\javier\desktop\proyecto.2018\sfml_proyect\include\enemigo.h
+	"Objeto.h"
+	"Player.h"
 
